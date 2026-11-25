@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTA Store | الشروط والأحكام وسياسة الخصوصية</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cairo for Arabic & Outfit for English -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#030408',
+            cardDark: 'rgba(10, 18, 36, 0.65)',
+            neonBlue: '#00a8ff',
+            electricCyan: '#38bdf8',
+            telegramBlue: '#0088cc',
+          },
+          fontFamily: {
+            arabic: ['Cairo', 'sans-serif'],
+            english: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Base Dark Theme & Custom Scrollbar */
+    :root {
+      --primary-blue: #00a8ff;
+      --cyan-glow: #38bdf8;
+      --deep-black: #030408;
+    }
+
+    body {
+      background-color: var(--deep-black);
+      color: #7dd3fc;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    html[dir="rtl"] body {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    html[dir="ltr"] body {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #030408;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #0284c7;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #38bdf8;
+    }
+
+    /* Animated Cyber Grid Background */
+    .cyber-grid {
+      background-size: 45px 45px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 168, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 168, 255, 0.06) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse at center, black 35%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 80%);
+    }
+
+    /* Floating Glowing Orbs */
+    @keyframes floatSlow {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -40px) scale(1.08); }
+      66% { transform: translate(-25px, 25px) scale(0.95); }
+    }
+
+    @keyframes floatReverse {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-35px, -30px) scale(1.1); }
+    }
+
+    .orb-1 {
+      animation: floatSlow 14s ease-in-out infinite;
+    }
+    .orb-2 {
+      animation: floatReverse 18s ease-in-out infinite;
+    }
+
+    /* Glassmorphism Cards with Blue Glow */
+    .glass-card {
+      background: linear-gradient(145deg, rgba(11, 20, 40, 0.78) 0%, rgba(5, 10, 22, 0.88) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      box-shadow: 0 10px 35px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 0 rgba(56, 189, 248, 0.15);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.55);
+      box-shadow: 0 15px 40px -10px rgba(0, 168, 255, 0.25), inset 0 1px 0 0 rgba(56, 189, 248, 0.35);
+    }
+
+    /* Glowing Telegram CTA Button */
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 18px rgba(0, 136, 204, 0.55), 0 0 36px rgba(56, 189, 248, 0.25);
+      }
+      50% {
+        box-shadow: 0 0 28px rgba(56, 189, 248, 0.85), 0 0 50px rgba(0, 168, 255, 0.45);
+      }
+    }
+
+    .telegram-btn {
+      background: linear-gradient(135deg, #0088cc 0%, #0ea5e9 100%);
+      animation: pulseGlow 3s infinite ease-in-out;
+      transition: all 0.3s ease;
+    }
+
+    .telegram-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+    }
+
+    .telegram-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Staggered Entrance Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal-card {
+      opacity: 0;
+      animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Language Switch Fade Transition */
+    .lang-fade {
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .lang-switching {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    /* Text Gradient Blue */
+    .blue-text-gradient {
+      background: linear-gradient(90deg, #38bdf8 0%, #00a8ff 50%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Canvas particles layer */
+    #particleCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="min-h-screen relative selection:bg-sky-500 selection:text-black">
+
+  <!-- Interactive Floating Particles Canvas -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Background Ambient Orbs & Cyber Grid -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="cyber-grid absolute inset-0"></div>
+    <div class="orb-1 absolute -top-24 -right-24 w-80 h-80 sm:w-[28rem] sm:h-[28rem] rounded-full bg-sky-500/15 blur-[110px]"></div>
+    <div class="orb-2 absolute top-1/2 -left-32 w-72 h-72 sm:w-[26rem] sm:h-[26rem] rounded-full bg-blue-600/15 blur-[120px]"></div>
+    <div class="orb-1 absolute -bottom-24 right-1/4 w-80 h-80 rounded-full bg-cyan-500/10 blur-[110px]"></div>
+  </div>
+
+  <!-- Sticky Glass Header -->
+  <header class="sticky top-0 z-40 border-b border-sky-500/20 bg-obsidian/80 backdrop-blur-xl">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-3">
+      
+      <!-- Brand Identity -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-sky-500/20 to-blue-600/30 border border-sky-400/40 flex items-center justify-center shadow-[0_0_15px_rgba(56,189,248,0.25)] group-hover:border-sky-300 transition">
+          <!-- Custom Store Bolt/Shield SVG -->
+          <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <div>
+          <span class="text-lg sm:text-xl font-extrabold tracking-wide blue-text-gradient block leading-none">OTA Store</span>
+          <span id="navSubtitle" class="text-[11px] sm:text-xs text-sky-400/80 font-medium">Official Terms & Privacy</span>
+        </div>
+      </a>
+
+      <!-- Right Controls: Language Switcher + Telegram Bot Button -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <!-- Language Toggle Button -->
+        <button 
+          id="langToggleBtn" 
+          onclick="toggleLanguage()" 
+          aria-label="Switch Language"
+          class="px-3.5 py-2.5 sm:px-4 rounded-xl bg-sky-950/60 hover:bg-sky-900/70 border border-sky-400/40 hover:border-sky-300 text-sky-300 font-bold text-sm sm:text-base flex items-center gap-2 transition-all duration-200 shadow-[0_0_12px_rgba(14,165,233,0.15)] active:scale-95 cursor-pointer">
+          <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+          </svg>
+          <span id="langBtnText">EN</span>
+        </button>
+
+        <!-- Primary Telegram Bot Button -->
+        <!-- ملاحظة: استبدل الرابط أدناه برابط البوت الخاص بك مثل https://t.me/YourBotUsername -->
+        <a 
+          href="https://t.me/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="telegram-btn px-4 py-2.5 sm:px-5 rounded-xl text-white font-bold text-sm sm:text-base flex items-center gap-2 shadow-lg">
+          <!-- Telegram Paper Plane SVG -->
+          <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+          <span id="navBotBtnText">بوت التلغرام</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main id="contentWrapper" class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-20 lang-fade">
+    
+    <!-- Hero Banner Section -->
+    <section class="text-center mb-10 sm:mb-12 reveal-card" style="animation-delay: 0.05s;">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-300 text-xs sm:text-sm font-semibold mb-4 shadow-[0_0_20px_rgba(56,189,248,0.15)]">
+        <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+        <span id="heroBadge">OTA Store Official Policy</span>
+      </div>
+
+      <h1 id="mainTitle" class="text-2xl sm:text-4xl md:text-[2.6rem] font-black leading-tight text-sky-400 drop-shadow-[0_0_25px_rgba(56,189,248,0.35)] mb-5">
+        📜 الشروط والأحكام وسياسة الخصوصية - بوت OTA Store
+      </h1>
+
+      <div class="glass-card rounded-2xl p-5 sm:p-7 text-sky-200/95 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto border-sky-400/25">
+        <p id="introText">
+          مرحباً بك في البوت الرسمي لـ <strong class="text-sky-400 font-bold">OTA Store</strong>. باستخدامك لهذا البوت وإتمامك لأي عملية شحن أو طلب، فإنك تقر بموافقتك الكاملة على جميع البنود والشروط الموضحة أدناه:
+        </p>
+      </div>
+    </section>
+
+    <!-- Terms & Privacy Cards Grid -->
+    <div id="sectionsContainer" class="space-y-6 sm:space-y-7">
+      <!-- Cards are dynamically rendered & translated via JavaScript -->
+    </div>
+
+    <!-- Bottom Call-to-Action & Footer Notice -->
+    <section class="mt-10 sm:mt-12 reveal-card" style="animation-delay: 0.55s;">
+      <div class="glass-card rounded-2xl p-6 sm:p-8 text-center border-sky-400/30 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-sky-500/5 via-blue-500/10 to-sky-500/5 pointer-events-none"></div>
+        
+        <p id="footerUpdateNote" class="text-sky-300/90 text-sm sm:text-base font-medium mb-6 leading-relaxed">
+          تحتفظ إدارة OTA Store بالحق في تعديل أو تحديث هذه الشروط في أي وقت بما يضمن استمرارية وجودة الخدمة.
+        </p>
+
+        <!-- Center Prominent Telegram Bot CTA Button -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="https://t.me/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="telegram-btn w-full sm:w-auto px-8 py-3.5 rounded-2xl text-white font-extrabold text-base sm:text-lg flex items-center justify-center gap-3">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+            </svg>
+            <span id="heroBotBtnText">بوت التلغرام</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-sky-500/15 bg-black/70 py-6 text-center px-4">
+    <p id="copyrightText" class="text-sky-400/80 text-xs sm:text-sm font-semibold">
+      © 2026 OTA Store. جميع الحقوق محفوظة — تصميم وبرمجة فريق OTA Store.
+    </p>
+  </footer>
+
+  <script>
+    // ==========================================
+    // 1. Bilingual Content Data (Arabic & English)
+    // ==========================================
+    const contentData = {
+      ar: {
+        dir: 'rtl',
+        langCode: 'ar',
+        pageTitle: 'OTA Store | الشروط والأحكام وسياسة الخصوصية',
+        navSubtitle: 'البوت الرسمي للشحن والخدمات',
+        langBtnText: 'EN',
+        botBtnText: 'بوت التلغرام',
+        heroBadge: 'الوثيقة الرسمية لبوت OTA Store',
+        mainTitle: '📜 الشروط والأحكام وسياسة الخصوصية - بوت OTA Store',
+        introText: 'مرحباً بك في البوت الرسمي لـ <strong class="text-sky-400 font-bold">OTA Store</strong>. باستخدامك لهذا البوت وإتمامك لأي عملية شحن أو طلب، فإنك تقر بموافقتك الكاملة على جميع البنود والشروط الموضحة أدناه:',
+        footerUpdateNote: 'تحتفظ إدارة OTA Store بالحق في تعديل أو تحديث هذه الشروط في أي وقت بما يضمن استمرارية وجودة الخدمة.',
+        copyrightText: '© 2026 OTA Store. جميع الحقوق محفوظة — تصميم وتطوير وبرمجة فريق OTA Store.',
+        sections: [
+          {
+            title: 'أولاً: شروط الإيداع والرصيد',
+            icon: `<svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+            items: [
+              {
+                label: '1. سياسة السحب والاسترداد:',
+                text: 'يُمنع منعاً باتاً استعادة المبلغ المحول أو سحب الرصيد بعد مرور 15 دقيقة من وقت التحويل إلا في الحالات الخاصة التي تقدرها الإدارة، ويجب صرف الرصيد في شراء المنتجات والخدمات داخل البوت فقط. (ولا يُسمح بالسحب نهائياً بعد مرور ساعة من الإيداع).'
+              },
+              {
+                label: '2. طلبات الإيداع المزيفة:',
+                text: 'أي محاولة لإرسال إشعارات أو طلبات إيداع وهمية أو مزيفة ستؤدي إلى الحظر الفوري والدائم لحسابك من البوت دون سابق إنذار.'
+              },
+              {
+                label: '3. استخدام الرصيد:',
+                text: 'الرصيد المودع في محفظة البوت مخصص حصراً للطلبات داخل البوت.'
+              }
+            ]
+          },
+          {
+            title: 'ثانياً: مسؤولية الطلبات والبيانات',
+            icon: `<svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`,
+            items: [
+              {
+                label: '1. دقة المعلومات:',
+                text: 'يقع على عاتق المستخدم وحده مسؤولية التأكد من صحة جميع البيانات المدخلة (مثل: رقم المعرّف ID، معلومات الحساب، أو تفاصيل الطلب والشحن) قبل تأكيد العملية.'
+              },
+              {
+                label: '2. إخلاء المسؤولية:',
+                text: 'إدارة البوت و OTA Store غير مسؤولين تماماً عن أي خسارة أو شحن خاطئ ناتج عن إدخال المستخدم لبيانات غير صحيحة، ولا يحق للمستخدم المطالبة بتعويض أو استرجاع المبلغ في حال تم تنفيذ الطلب بناءً على البيانات التي أدخلها.'
+              },
+              {
+                label: '3. إلغاء الطلبات:',
+                text: 'بعد تقديم الطلب، لا يمكن للمستخدم إلغاؤه تلقائياً، ويتم الإلغاء حصراً من قِبل الإدارة عبر التواصل السريع مع الدعم الفني بشرط أن يكون ذلك قبل بدء التنفيذ وفوات الأوان.'
+              },
+              {
+                label: '4. وقت تنفيذ الطلبات:',
+                text: 'من الطبيعي في بعض الأحيان أن يتأخر تنفيذ الطلب عن الوقت المتوقع المعتاد، وذلك يعتمد على حجم الضغط على البوت أو مزودي الخدمة، ونضمن لك وصول طلبك بأقرب وقت ممكن.'
+              }
+            ]
+          },
+          {
+            title: 'ثالثاً: سياسة الخصوصية وحماية البيانات',
+            icon: `<svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+            items: [
+              {
+                label: '1. خصوصية المحادثات:',
+                text: 'لا يمكن لإدارة البوت الاطلاع على الرسائل العادية التي تكتبها داخل البوت، حيث يقتصر عمل النظام على استقبال ومعالجة طلبات الإيداع وطلبات الشحن الخاصة بك فقط.'
+              },
+              {
+                label: '2. السرية التامة:',
+                text: 'جميع البيانات الأساسية اللازمة لإتمام الخدمة (مثل معرّف تليجرام وسجل الطلبات وبيانات الدفع) تُستخدم حصرياً لغرض تنفيذ طلباتك.'
+              },
+              {
+                label: '3. عدم المشاركة:',
+                text: 'نلتزم بعدم بيع أو مشاركة أو تسريب أي من بياناتك الشخصية أو معلومات حسابك مع أي طرف ثالث تحت أي ظرف من الظروف.'
+              }
+            ]
+          },
+          {
+            title: 'رابعاً: الملكية الفكرية والدعم الفني',
+            icon: `<svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>`,
+            items: [
+              {
+                label: '• الحقوق:',
+                text: 'جميع الحقوق محفوظة لـ OTA Store، هذا البوت من تصميم وتطوير وبرمجة فريق OTA Store. يُمنع نسخ أو تقليد محتوى البوت أو خدماته دون إذن مسبق.'
+              },
+              {
+                label: '• التواصل والدعم:',
+                text: 'في حال واجهتك أي مشكلة، أو رغبت في طلب إلغاء عاجل، أو كان لديك أي استفسار، يسعدنا تواصلك معنا مباشرة عبر حساب الدعم الفني داخل البوت وسنقوم بخدمتك في أقرب وقت.'
+              }
+            ]
+          }
+        ]
+      },
+      en: {
+        dir: 'ltr',
+        langCode: 'en',
+        pageTitle: 'OTA Store | Terms & Conditions and Privacy Policy',
+        navSubtitle: 'Official Top-Up & Digital Services Bot',
+        langBtnText: 'عربي',
+        botBtnText: 'Telegram Bot',
+        heroBadge: 'OTA Store Official Policy',
+        mainTitle: '📜 Terms & Conditions and Privacy Policy - OTA Store Bot',
+        introText: 'Welcome to the official <strong class="text-sky-400 font-bold">OTA Store</strong> Bot. By using this bot and completing any top-up or order, you acknowledge your full agreement to all the terms and conditions outlined below:',
+        footerUpdateNote: 'OTA Store management reserves the right to modify or update these terms at any time to ensure service continuity and quality.',
+        copyrightText: '© 2026 OTA Store. All Rights Reserved — Designed, Developed & Programmed by the OTA Store Team.',
+        sections: [
+          {
+            title: 'First: Deposit & Balance Terms',
+            icon: `<svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+            items: [
+              {
+                label: '1. Withdrawal & Refund Policy:',
+                text: 'Recovering transferred funds or withdrawing balance is strictly prohibited after 15 minutes from the transfer time, except in special cases evaluated by management, and the balance must be spent exclusively on purchasing products and services inside the bot. (Withdrawals are strictly not permitted at all after one hour from deposit).'
+              },
+              {
+                label: '2. Fake Deposit Requests:',
+                text: 'Any attempt to send fake or fraudulent deposit notifications or requests will result in an immediate and permanent ban of your account from the bot without prior notice.'
+              },
+              {
+                label: '3. Balance Usage:',
+                text: 'The balance deposited in the bot wallet is dedicated exclusively to orders within the bot.'
+              }
+            ]
+          },
+          {
+            title: 'Second: Orders & Data Responsibility',
+            icon: `<svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`,
+            items: [
+              {
+                label: '1. Information Accuracy:',
+                text: 'The user alone bears the sole responsibility of verifying the accuracy of all entered data (such as ID number, account details, or order and top-up info) before confirming the transaction.'
+              },
+              {
+                label: '2. Disclaimer of Liability:',
+                text: 'Bot management and OTA Store are completely not responsible for any loss or wrong top-up resulting from the user entering incorrect data, and the user has no right to claim compensation or a refund if the order has been executed based on the data entered.'
+              },
+              {
+                label: '3. Order Cancellation:',
+                text: 'After submitting an order, the user cannot cancel it automatically; cancellation is done exclusively by management via quick contact with technical support, provided it is before execution begins and before it is too late.'
+              },
+              {
+                label: '4. Order Execution Time:',
+                text: 'It is normal for order execution to occasionally be delayed beyond the usual expected time, depending on the volume of traffic/load on the bot or service providers, and we guarantee your order will arrive as soon as possible.'
+              }
+            ]
+          },
+          {
+            title: 'Third: Privacy Policy & Data Protection',
+            icon: `<svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+            items: [
+              {
+                label: '1. Chat Privacy:',
+                text: 'Bot management cannot view regular messages you type inside the bot; the system is strictly limited to receiving and processing your deposit and top-up requests only.'
+              },
+              {
+                label: '2. Complete Confidentiality:',
+                text: 'All basic data required to complete the service (such as Telegram ID, order history, and payment details) is used exclusively for executing your orders.'
+              },
+              {
+                label: '3. No Third-Party Sharing:',
+                text: 'We commit not to sell, share, or leak any of your personal data or account information to any third party under any circumstances.'
+              }
+            ]
+          },
+          {
+            title: 'Fourth: Intellectual Property & Technical Support',
+            icon: `<svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>`,
+            items: [
+              {
+                label: '• Rights:',
+                text: 'All rights reserved to OTA Store. This bot is designed, developed, and programmed by the OTA Store team. Copying or imitating the bot\'s content or services without prior permission is prohibited.'
+              },
+              {
+                label: '• Contact & Support:',
+                text: 'If you encounter any issue, wish to request an urgent cancellation, or have any inquiry, we are happy to hear from you directly via our technical support account inside the bot and we will serve you as soon as possible.'
+              }
+            ]
+          }
+        ]
+      }
+    };
+
+    let currentLang = 'ar';
+
+    // ==========================================
+    // 2. Render Function for Language Content
+    // ==========================================
+    function renderContent(lang) {
+      const data = contentData[lang];
+      const htmlEl = document.documentElement;
+
+      // Update Direction & Lang Attributes
+      htmlEl.setAttribute('dir', data.dir);
+      htmlEl.setAttribute('lang', data.langCode);
+      document.title = data.pageTitle;
+
+      // Update Static Labels
+      document.getElementById('navSubtitle').textContent = data.navSubtitle;
+      document.getElementById('langBtnText').textContent = data.langBtnText;
+      document.getElementById('navBotBtnText').textContent = data.botBtnText;
+      document.getElementById('heroBotBtnText').textContent = data.botBtnText;
+      document.getElementById('heroBadge').textContent = data.heroBadge;
+      document.getElementById('mainTitle').textContent = data.mainTitle;
+      document.getElementById('introText').innerHTML = data.introText;
+      document.getElementById('footerUpdateNote').textContent = data.footerUpdateNote;
+      document.getElementById('copyrightText').textContent = data.copyrightText;
+
+      // Render Section Cards
+      const container = document.getElementById('sectionsContainer');
+      container.innerHTML = '';
+
+      data.sections.forEach((section, index) => {
+        const delay = (0.15 + index * 0.1).toFixed(2);
+        const card = document.createElement('article');
+        card.className = 'glass-card rounded-2xl p-6 sm:p-8 reveal-card';
+        card.style.animationDelay = `${delay}s`;
+
+        const itemsHtml = section.items.map(item => `
+          <li class="flex items-start gap-3 p-3.5 rounded-xl bg-sky-950/35 border border-sky-500/15 hover:border-sky-400/35 transition-colors">
+            <span class="mt-1.5 w-2 h-2 rounded-full bg-sky-400 shrink-0 shadow-[0_0_8px_#38bdf8]"></span>
+            <p class="text-sky-200/90 text-sm sm:text-base leading-relaxed">
+              <strong class="text-sky-400 font-bold">${item.label}</strong>
+              <span class="mx-1">${item.text}</span>
+            </p>
+          </li>
+        `).join('');
+
+        card.innerHTML = `
+          <div class="flex items-center gap-3.5 mb-5 pb-3.5 border-b border-sky-500/20">
+            <div class="w-11 h-11 rounded-xl bg-sky-500/15 border border-sky-400/35 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(56,189,248,0.2)]">
+              ${section.icon}
+            </div>
+            <h2 class="text-lg sm:text-2xl font-extrabold text-sky-400 tracking-tight">
+              ${section.title}
+            </h2>
+          </div>
+          <ul class="space-y-3.5">
+            ${itemsHtml}
+          </ul>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // ==========================================
+    // 3. Smooth Language Toggle Handler
+    // ==========================================
+    function toggleLanguage() {
+      const wrapper = document.getElementById('contentWrapper');
+      wrapper.classList.add('lang-switching');
+
+      setTimeout(() => {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        renderContent(currentLang);
+        wrapper.classList.remove('lang-switching');
+      }, 220);
+    }
+
+    // ==========================================
+    // 4. Subtle Blue Particle Network Canvas
+    // ==========================================
+    function initParticles() {
+      const canvas = document.getElementById('particleCanvas');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener('resize', () => {
+        resizeCanvas();
+        createParticles();
+      });
+
+      function createParticles() {
+        particles = [];
+        const count = Math.min(Math.floor((canvas.width * canvas.height) / 22000), 55);
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.45,
+            vy: (Math.random() - 0.5) * 0.45,
+            radius: Math.random() * 1.8 + 0.7,
+            alpha: Math.random() * 0.5 + 0.2
+          });
+        }
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(56, 189, 248, ${p.alpha})`;
+          ctx.fill();
+
+          // Connect nearby particles with faint glowing lines
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (dist < 130) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(0, 168, 255, ${0.12 * (1 - dist / 130)})`;
+              ctx.lineWidth = 0.7;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(animateParticles);
+      }
+
+      resizeCanvas();
+      createParticles();
+      animateParticles();
+    }
+
+    // Initialize Page on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderContent('ar');
+      initParticles();
+    });
+  </script>
+</body>
+</html>
